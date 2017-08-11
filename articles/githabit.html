@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GitHabit - GitHub webhooks &#9829; HabitRPG! - Kerrick Long</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header id="masthead" class="vcard"> <!-- http://microformats.org/wiki/hcard -->
+      <hgroup>
+        <h1>
+          <a href="https://kerricklong.com/" class="url fn">Kerrick Long</a>
+        </h1>
+        <h2 class="tagline">Web developer</h2>
+      </hgroup>
+      <section id="contact">
+        <a href="mailto:me@kerricklong.com" class="email">me@kerricklong.com</a>
+        <a href="./06DFCD97.asc" class="key">PGP key 06DFCD97</a>
+        <a href="https://twitter.com/KerrickLong" class="url">@KerrickLong</a>
+      </section>
+    </header>
+    <section id="content">
+  <h2>GitHabit - GitHub webhooks &#9829; HabitRPG!</h2>
+  <p>I wrote an <a href="https://github.com/Kerrick/githabit">open source node.js
+application</a> to tie your
+<a href="https://github.com/">Github</a> contributions with your
+<a href="https://habitrpg.com/">HabitRPG</a> account. Stay motivated to contribute to open
+source with <a href="https://kerricklong.com/articles/githabit.html">GitHabit</a>!</p>
+
+<h3 id="how-to-use-githabit">How to use GitHabit</h3>
+
+<h4 id="install-githabit">Install GitHabit</h4>
+
+<p>First, you&rsquo;ll need to set up your node server. Check out the <a href="https://github.com/Kerrick/githabit">GitHub repository for
+GitHabit</a>. The README has more information
+on how to get started!</p>
+
+<h4 id="build-the-payload-url">Build the payload URL</h4>
+
+<p>Get your GitHabit API Token and User ID on <a href="https://habitrpg.com/#/options/settings/api">HabitRPG -&gt; ⚙ -&gt;
+API</a>, then fill them in below to
+build your payload URL. You’ll use this payload URL later to set up
+GitHabit.</p>
+
+<script src="/js/githabit.js"></script>
+
+<div id="githabit-dynamic" style="display:none;margin-bottom:1.5rem;">
+<label>
+<input id="githabit-server" placeholder="https://example.com/githabit" />
+Enter your GitHabit Server URL
+</label>
+<label>
+<input id="githabit-user" placeholder="abc-123-def-456" />
+Enter your HabitRPG user ID
+</label>
+<label>
+<input id="githabit-api" placeholder="ghi-789-jkl-012" />
+Enter your HabitRPG API token
+</label>
+<label>
+<input id="githabit-payload-url" readonly="readonly" />
+Copy your GitHub payload url
+</label>
+</div>
+<pre id="githabit-static">
+[YOUR_SERVER_URL]?user=[YOUR_USER_ID]&amp;api=[YOUR_API_TOKEN]
+</pre>
+
+<h4 id="set-up-webhooks">Set up webhooks</h4>
+
+<p>Next set up your webhooks; please note that you will have to do this once for
+each repository you want to have GitHabit track.</p>
+
+<ol>
+  <li>Go to <em>Settings</em> for a <a href="https://github.com/">GitHub</a> repository you control
+ <img src="https://i.imgur.com/bmrIoPc.png" alt="Screenshot of Step 1" /></li>
+  <li>Click <em>Webhooks &amp; Services</em></li>
+  <li>Click <em>Add webhook</em>
+ <img src="https://i.imgur.com/auXpLv9.png" alt="Screenshot of Steps 2, 3" /></li>
+  <li>Use the Payload URL from above.</li>
+  <li>If you wish, you can customize <em>which</em> events will level you up. By default,
+<em>Just the <code>push</code> event</em> is a good choice.</li>
+  <li>Be sure that the <em>Active</em> checkbox is checked.</li>
+  <li>Click <em>Add webhook</em> and you’ll be set up!
+ <img src="https://i.imgur.com/5t2s9OJ.png" alt="Screenshot of Steps 4, 5, 6, 7" /></li>
+</ol>
+
+<p>The first time GitHabit receives an event from GitHub, it will create the
+GitHub habit for you. You may then edit the habit as you would any other. Now
+your open source contributions will level up your GitHub habit on HabitRPG!</p>
+
+<h3 id="githabit-for-developers">GitHabit for Developers</h3>
+
+<p>If you would like to
+contribute, check out the <a href="https://github.com/Kerrick/githabit">GitHub repository for
+GitHabit</a>. The README has more information
+on how to get started, and issues and pull requests are welcome!</p>
+
+</section>
+<section id="meta">
+  <time class="publishdate" datetime="2014-04-19T00:00:00+00:00">19 Apr 2014</time>
+  <span class="wordcount">320 words</span>
+  
+</section>
+
+
+    <footer>
+      <nav>
+        <ul>
+          <li>
+            <a href="https://github.com/Kerrick">Github</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/KerrickLong">Twitter</a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/KerrickLong">LinkedIn</a>
+          </li>
+          
+        </ul>
+      </nav>
+    </footer>
+    
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-5594479-3', 'kerricklong.com');
+          ga('send', 'pageview');
+        </script>
+    
+  </body>
+</html>

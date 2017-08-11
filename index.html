@@ -1,56 +1,184 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <title>Home - Kerrick Long</title>
     <meta charset="utf-8">
-    <title>Kerrick Long</title>
-    <style>
-      * { box-sizing: border-box; }
-      body { width: 100%; height: 100%; margin: 0; padding: 1rem; font: 18px serif; border: 1rem solid #F26C0D; color: #0e1428; display: flex; flex-direction: column; }
-      a:link { color: #4464ad; }
-      a:visited: { color: #2c0e37; }
-      small { font-size: 0.6rem; display: block; }
-      aside { font-size: 0.8rem; color: #c0c0c0; text-align: right; white-space: pre-line; order: 3; }
-      header { order: 1; }
-      main { order: 2; }
-      @media (min-width: 768px) {
-        body { display: block; }
-        aside { float: right; max-width: 50%; }
-      }
-    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <aside>
-      <p>
-        Websites are fragile things.
-        This is website number... 8?
-        Some died because they were terrible.
-        Some died because I didn't have backups.
-        Some represented a part of my life I moved on from.
-      </p>
-      
-      <p>
-        This website will die too.
-        But until it does, here it is.
-      </p>
-    </aside>
-    
-    <header>
+    <header id="masthead" class="vcard"> <!-- http://microformats.org/wiki/hcard -->
       <hgroup>
-        <h1>I'm Kerrick Long.</h1> <h2>I make web stuff.</h2>
-        I <a href="https://github.com/Kerrick">write software</a>, I <a href="https://speakerdeck.com/Kerrick">talk about software</a>, and I <a href="http://drive.secondstreet.com/author/kerrick/">write about software</a>.
+        <h1>
+          <a href="https://kerricklong.com/" class="url fn">Kerrick Long</a>
+        </h1>
+        <h2 class="tagline">Web developer</h2>
       </hgroup>
-      I also <a href="http://magic.wizards.com/">play games</a>. I <a href="https://www.bogleheads.org/wiki/Bogleheads%C2%AE_investment_philosophy">save money</a> when I can. I <a href="https://www.bbrfoundation.org/">give</a>.
-      <small>
-       I laugh, I love, I get angry, and I have <a href="http://hire.kerricklong.com/">hopes and dreams</a>.
-      </small>
+      <section id="contact">
+        <a href="mailto:me@kerricklong.com" class="email">me@kerricklong.com</a>
+        <a href="./06DFCD97.asc" class="key">PGP key 06DFCD97</a>
+        <a href="https://twitter.com/KerrickLong" class="url">@KerrickLong</a>
+      </section>
     </header>
+    <section id="blog-posts">
+  <header>
+    <h2>Recent Blog Posts</h2>
+  </header>
+  
     
-    <main>
-      <h3>Want to talk?</h3>
-      <ul>
-        <li><a href="mailto:me@kerricklong.com">Send me an email</a>. I might read it in a few days.</li>
-        <li><a href="https://twitter.com/KerrickLong">Tweet at me</a>. This is faster than email. Once too many people do this, it won't be faster anymore.</li>
-        <li>Call me or text me, if you have my phone number.</li>
-      </ul>
-    </main>
+  
+    
+  
+    
+      <h3><a href="http://drive.secondstreet.com/introducing-talker/">Introducing Talker.js</a></h3>
+      <p>Talker.js wraps postMessage in an easy-to-use API. It handles queueing your messages until it completes a handshake so it knows both sides are ready, it filters out messages that aren't from Talker on the other side, and it is built on JavaScript Promises, so you can send a request and receive a response.</p>
+    
+  
+    
+      <h3><a href="http://drive.secondstreet.com/extracting-an-ember-cli-addon-from-your-application/">Extracting an Ember CLI Addon From Your Application</a></h3>
+      <p>With the advent of Ember CLI and Ember CLI Addons for shared functionality, it's now quite simple to create multiple applications that share a common core. This blog post is a quick overview of Second Street's recent effort to extract that common functionality into an ember-addon that we can include in all of our applications.</p>
+    
+  
+    
+      <h3><a href="/articles/githabit.html">GitHabit - GitHub webhooks &#9829; HabitRPG!</a></h3>
+      <p>I wrote an open source node.js application to tie your GitHub contributions with your HabitRPG account. Stay motivated to contribute to open source with GitHabit!</p>
+    
+  
+    
+      <h3><a href="/articles/why-ember-js-rocks.html">Why does Ember.js rock?</a></h3>
+      <p>Ember.js is a MVC (Model &ndash; View &ndash; Contrtoller) JavaScript framework that helps developers create ambitious single-page web applications without sacrificing what made the web great. This is a quick overview of some of the best bite-sized parts.</p>
+    
+  
+    
+      <h3><a href="/articles/hack-for-change-2013.html">Hack for Change 2013</a></h3>
+      <p>This blog post chronicles my experience at the first National Civic Day of Hacking, which was also my first hackathon. Our team won by conceiving and demonstrating an automated phone system to place homeless people into shelters faster and with less human interaction, allowing those resources to be shifted to areas of greater need.</p>
+    
+  
+</section>
+<section id="talks">
+  <header>
+    <h2>Talks</h2>
+  </header>
+  
+      
+          <h3><a href="https://speakerdeck.com/kerrick/15-things-you-shouldnt-do-in-ember-anymore">15 Things You Shouldn't Do In Ember Anymore</a></h3>
+          
+          <h4 class="subtitle">Shedding Expired Ember.js Best Practices</h4>
+          
+        <p>
+          Presented
+      
+          at <a href="http://secondstreet.com/">Second Street</a>
+          on 03 Aug 2015.
+        </p>
+  
+      
+          <h3><a href="https://speakerdeck.com/kerrick/the-ecmascript-formerly-known-as-6">The ECMAScript Formerly Known as 6</a></h3>
+          
+        <p>
+          Presented
+      
+          at <a href="http://secondstreet.com/">Second Street</a>
+          on 31 Jul 2015.
+        </p>
+  
+      
+          <h3><a href="https://speakerdeck.com/kerrick/css-study-group-2">CSS Study Group 2</a></h3>
+          
+          <h4 class="subtitle">CSS3 & Sass with Compass</h4>
+          
+        <p>
+          Presented
+      
+          at <a href="http://secondstreet.com/">Second Street</a>
+          on 06 Nov 2014.
+        </p>
+  
+      
+          <h3><a href="https://speakerdeck.com/kerrick/css-study-group-1">CSS Study Group 1</a></h3>
+          
+          <h4 class="subtitle">Selectors, Rules, Inheritnce, & Specificity</h4>
+          
+        <p>
+          Presented
+      
+          at <a href="http://secondstreet.com/">Second Street</a>
+          on 30 Oct 2014.
+        </p>
+  
+      
+          <h3><a href="https://www.youtube.com/watch?v=_VpQ6UmucOc">Services & Component Collaboration</a></h3>
+          
+        <p>
+          Presented
+      
+          at <a href="https://www.youtube.com/user/emberjshangout">Ember Hangout</a>
+          on 17 Jun 2014.
+        </p>
+  
+      
+          <h3><a href="https://speakerdeck.com/kerrick/donate-stl-number-build4stl-hackathon-keynote">Donate STL Hackathon Keynote</a></h3>
+          
+          <h4 class="subtitle">A National Civic Day of Hacking Project</h4>
+          
+        <p>
+          Presented
+      
+          at <a href="http://web.archive.org/web/20141203075117/http://buildforstl.org/2014/06/01/donatestl-wins/">Build 4 STL</a>
+          on 01 Jun 2014.
+        </p>
+  
+      
+          <h3><a href="https://speakerdeck.com/kerrick/tdd-with-ember-dot-js">TDD with Ember.js</a></h3>
+          
+        <p>
+          Presented
+      
+          at <a href="http://wayback.archive.org/web/20160417225922/https://www.meetup.com/STLEmber/events/159912472/">STL Ember.js</a>
+          on 06 Mar 2014.
+        </p>
+  
+      
+          <h3><a href="/talks/javascript-promises-thinking-sync-in-an-async-world.html">JavaScript Promises</a></h3>
+          
+          <h4 class="subtitle">Thinking Sync in an Async World</h4>
+          
+        <p>
+          Presented
+      
+          at <a href="http://wayback.archive.org/web/20160417225934/http://www.meetup.com/STLEmber/events/159285352/">STL Ember.js</a>
+          on 06 Feb 2014.
+        </p>
+  
+</section>
+
+
+    <footer>
+      <nav>
+        <ul>
+          <li>
+            <a href="https://github.com/Kerrick">Github</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/KerrickLong">Twitter</a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/KerrickLong">LinkedIn</a>
+          </li>
+          
+        </ul>
+      </nav>
+    </footer>
+    
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-5594479-3', 'kerricklong.com');
+          ga('send', 'pageview');
+        </script>
+    
   </body>
 </html>

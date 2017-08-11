@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Why does Ember.js rock? - Kerrick Long</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header id="masthead" class="vcard"> <!-- http://microformats.org/wiki/hcard -->
+      <hgroup>
+        <h1>
+          <a href="https://kerricklong.com/" class="url fn">Kerrick Long</a>
+        </h1>
+        <h2 class="tagline">Web developer</h2>
+      </hgroup>
+      <section id="contact">
+        <a href="mailto:me@kerricklong.com" class="email">me@kerricklong.com</a>
+        <a href="./06DFCD97.asc" class="key">PGP key 06DFCD97</a>
+        <a href="https://twitter.com/KerrickLong" class="url">@KerrickLong</a>
+      </section>
+    </header>
+    <section id="content">
+  <h2>Why does Ember.js rock?</h2>
+  <p>In response to <a href="http://angular-tips.com/blog/2013/08/why-does-angular-dot-js-rock/">this blog post</a> about why Angular.js rocks, I thought I’d write something similar about Ember.js.</p>
+
+<aside class="expired-content">
+  Please note that this article was written for Ember.js 1.3, which is an old version of Ember.js. Its content may not be up-to-date with current best practices.
+</aside>
+
+<p>Ember.js is a MVC (Model – View – Controller) JavaScript framework which is maintained by the <a href="http://emberjs.com/team/">Ember Core Team</a> (including Tom Dale, Yehuda Katz, and others). It helps developers create ambitious single-page web applications that don’t sacrifice what makes the web great: <a href="http://www.w3.org/TR/cooluris/">URI semantics</a>, <a href="http://en.wikipedia.org/wiki/RESTful">RESTful architecture</a>, and the write-once, run-anywhere trio of HTML, CSS, and JavaScript.</p>
+
+<p>I could spend all day writing about why you should try Ember.js, but it’s probably better if I let it speak for itself.</p>
+<hr />
+<h3 id="data_binding">Data binding</h3>
+<iframe allowtransparency='true' class='embed' frameborder='0' scrolling='yes' src='https://codepen.io/Kerrick/embed/dmlKs'><a href='http://cdpn.io/dmlKs'>View on Codepen</a></iframe>
+<p>As you can see in the above example, Ember.js does support data binding. What we type into the input is bound to <code>name</code>, as is the text after “Echo: ”. When you change the text, in one place, it automatically updates everywhere.</p>
+
+<p>But how? Ember.js uses Handlebars for two-way data binding. Templates written in handlebars get and set data from their controller (which will be automatically generated with smart defaults if you don’t write it yourself, as it was here). Every time we type something in our input, the <code>name</code> property of our controller is updated. Then, automatically, the template is updated because the bound data changed.</p>
+
+<p>Alright, that was’t hard. Let’s see a more complex example.</p>
+<iframe allowtransparency='true' class='embed' frameborder='0' scrolling='yes' src='https://codepen.io/Kerrick/embed/wqEbx'><a href='http://cdpn.io/wqEbx'>View on Codepen</a></iframe>
+<p>This time, we explicitely generate our <code>ApplicationController</code> instead of letting Ember.js generate it for us. In doing this, we set its properties, which are immediately available in the Handlebars template. Here, we’ve set the string <code>message</code> to <code>World</code> by default, while still binding it to the input and the text.</p>
+
+<p>I’m sure you’re wondering if we can bind functions as well as primitives. Yes we can, using a mechanism called “Computed Properties”.</p>
+<iframe allowtransparency='true' class='embed' frameborder='0' scrolling='yes' src='https://codepen.io/Kerrick/embed/FhAbv'><a href='http://cdpn.io/FhAbv'>View on Codepen</a></iframe>
+<p>If you look at the <code>ApplicationController</code>, you’ll notice that the <code>shout</code> property is a function with the <code>.property()</code> method called on it. This means that any time the property or properties you name in the <code>.property()</code> method changes, the function will be run again, and the template will be updated. In addition, the Handlebars template contains the <code>{{#if}}</code> helper, which tests for truthiness. Any time the value changes, Ember updates the DOM automatically.</p>
+
+<p>Notice that the template does not care that the <code>{{shout}}</code> binding is a function. This is by design, as the <a href="http://en.wikipedia.org/wiki/Uniform_Access_Principle">Uniform Access Principle</a> states that “All services offered by a module should be available through a uniform notation, which does not betray whether they are implemented through storage or through computation.” Basically, you never have to re-write the template if you decide a primitive needs to be a computed property.</p>
+<hr />
+<h3 id="components">Components</h3>
+
+<p>A component is a way to teach HTML new tricks. Instead of being limited to the tags and functionality set forth by the <abbr title='World Wide Web Consortium'>W3C</abbr>, you can invent your own elements. Ember.js has embraced this upcoming technology using Handlebars.</p>
+
+<p>For example, instead of having this:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;pie-chart&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
+<span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span><span class='nt'>&gt;</span>
+  <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;.pie-chart&#39;</span><span class='p'>).</span><span class='nx'>pieChart</span><span class='p'>({</span>
+    <span class='nx'>width</span><span class='o'>:</span> <span class='mi'>640</span><span class='p'>,</span>
+    <span class='nx'>height</span><span class='o'>:</span> <span class='mi'>480</span><span class='p'>,</span>
+    <span class='nx'>data</span><span class='o'>:</span> <span class='s1'>&#39;1,2,3&#39;</span>
+  <span class='p'>});</span>
+<span class='nt'>&lt;/script&gt;</span>
+</code></pre></div>
+<p>We could have this:</p>
+<div class='highlight'><pre><code class='html'>{{pie-chart width=&quot;640&quot; height=&quot;480&quot; data=&quot;1,2,3&quot;}}
+</code></pre></div>
+<p>As an example, I’ve created and used <a href="http://microformats.org/wiki/hcard">hCard</a> component below.</p>
+<iframe allowtransparency='true' class='embed' frameborder='0' scrolling='yes' src='https://codepen.io/Kerrick/embed/oztIA'><a href='http://cdpn.io/oztIA'>View on Codepen</a></iframe>
+<p>We defined our component by opening a new <code>&lt;script type=&quot;text/x-handlebars&quot;&gt;</code>, and setting its template name (via the <code>data-template-name</code> attribute) to be <code>components/NAME</code>. Note that the web components (and Ember components) specification requires the name to have a dash in it, to separate it from existing HTML tags.</p>
+
+<p>Components cannot see properties from the context they are called in. Instead, you must pass what you want the component to have access to into the component explicitely.</p>
+<hr />
+<h3 id="handlebars_helpers">Handlebars Helpers</h3>
+
+<p>Imagine that we need to show somebody the cost of goods in their shopping cart.</p>
+<iframe allowtransparency='true' class='embed' frameborder='0' scrolling='yes' src='https://codepen.io/Kerrick/embed/vKyDw'><a href='http://cdpn.io/vKyDw'>View on Codepen</a></iframe>
+<p>Wouldn’t it be nice if we could format the total to look like money instead of just a bare number? We can!</p>
+<iframe allowtransparency='true' class='embed' frameborder='0' scrolling='yes' src='https://codepen.io/Kerrick/embed/Epars'><a href='http://cdpn.io/Epars'>View on Codepen</a></iframe>
+<p>Using the <a href="http://josscrowcroft.github.io/accounting.js/">Accounting.js</a> library, we wrote a custom Handlebars helper, <code>money</code>, that will format a number to look like money. We can even pass in options to our helper.</p>
+<hr />
+<h3 id="much_much_more">Much, Much More</h3>
+
+<p>I’ve only scratched the surface here. For more information, feel free to peruse the wonderful <a href="http://emberjs.com/guides/">Ember.js Guides</a>. In particular, check out <a href="http://emberjs.com/guides/routing/">routing</a>—tying the URL to application state. And if you really want to see the power of the Ember.js ecosystem, take a look at the (beta version of) <a href="http://emberjs.com/guides/models/the-rest-adapter/">Ember Data</a>, an ORM for RESTful JSON APIs.</p>
+</section>
+<section id="meta">
+  <time class="publishdate" datetime="2013-08-01T00:00:00+00:00">01 Aug 2013</time>
+  <span class="wordcount">801 words</span>
+  
+    <a class="social-hn" href="https://news.ycombinator.com/item?id=6153917">Discuss on HN</a>
+  
+</section>
+
+
+    <footer>
+      <nav>
+        <ul>
+          <li>
+            <a href="https://github.com/Kerrick">Github</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/KerrickLong">Twitter</a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/KerrickLong">LinkedIn</a>
+          </li>
+          
+            <li>
+              <a style="color: #ff6600;" href="https://news.ycombinator.com/item?id=6153917">Discuss on HN</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </footer>
+    
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-5594479-3', 'kerricklong.com');
+          ga('send', 'pageview');
+        </script>
+    
+  </body>
+</html>
