@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                text-align: center;
+                pading: 1em;
+            }
+            #output {
+                font: bold 2em monospace;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        Reload count: <span id="output">Loading...</span>
+
+        <script>
+            let total = Number.parseInt(localStorage.getItem('dont-reload-me-total') || 0);
+            total +=1;
+            localStorage.setItem('dont-reload-me-total', total);
+            document.querySelector('#output').innerText = total;
+        </script>
+    </body>
+</html>
